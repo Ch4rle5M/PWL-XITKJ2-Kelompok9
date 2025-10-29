@@ -26,13 +26,14 @@ body {
 }
 .menu {
   display: flex;
-  gap: 12px;
+  gap: 50px;
+  margin-right: 90px;
 }
 .menu a {
   background: rgba(90, 0, 120, 0.5);
   color: #fff;
   border: 1px solid #bb66ff;
-  padding: 8px 16px;
+  padding: 15px 30px;
   cursor: pointer;
   border-radius: 6px;
   font-weight: bold;
