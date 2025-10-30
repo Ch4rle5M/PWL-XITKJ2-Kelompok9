@@ -1,5 +1,5 @@
 <?php
-session_start(); // <-- INI YANG HILANG. WAJIB ADA DI PALING ATAS
+session_start();
 ?>
 <!DOCTYPE html>
 <head>
