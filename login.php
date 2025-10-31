@@ -4,7 +4,7 @@ session_start();
 $error_message = '';
 
 if (isset($_SESSION['error'])) {
-    $error_message = "<p style='color: red; text-align: center;'>" . $_SESSION['error'] . "</p>";
+    $error_message = "<h2 style='color: red; text-align: center;'>" . $_SESSION['error'] . "</h2>";
     unset($_SESSION['error']);
 }
 ?>
