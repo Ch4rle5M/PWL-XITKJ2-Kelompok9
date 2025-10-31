@@ -1,0 +1,133 @@
+body{
+  --bg: #07090b;
+  --accent-1: #4a6bff;
+  --accent-2: #9353ff;
+  --muted: #bfc7cf;
+  --green: #24c36b;
+  --white: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: linear-gradient(180deg, #040506 0%, #07090b 100%);
+  color: var(--white);
+  font-family: "Poppins", sans-serif;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 30px;
+  background: rgba(20, 0, 30, 0.6);
+  backdrop-filter: blur(8px);
+  border-bottom: 2px solid transparent;
+  border-image: linear-gradient(to right, #ff00cc, #6600ff);
+  border-image-slice: 1;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+.logo img {
+  height: 4rem;
+}
+.menu {
+  display: flex;
+  gap: 62px;
+}
+.menu a {
+  background: rgba(90, 0, 120, 0.5);
+  color: #fff;
+  border: 1px solid #bb66ff;
+  padding: 10px 26px;
+  cursor: pointer;
+  border-radius: 6px;
+  font-weight: bold;
+  transition: all 0.25s ease-in-out;
+  text-decoration: none;
+}
+.menu a:hover {
+  background: #6600cc;
+  box-shadow: 0 0 10px #aa55ff, 0 0 20px #6600ff;
+  transform: translateY(-2px);
+}
+
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+  gap: 20px;
+}
+
+main {
+  padding: 40px 100px;
+}
+
+h2 {
+  font-size: 2.2em;
+  margin-bottom: 15px;
+}
+
+h3 {
+  font-size: 1.8em;
+  margin-top: 30px;
+  margin-bottom: 15px;
+}
+
+.section {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-top: 40px;
+  gap: 40px;
+}
+
+.section .text {
+  flex: 1;
+  line-height: 1.6;
+}
+
+.section img {
+  width: 180px;
+  border-radius: 10px;
+  border: 2px solid #6600cc;
+  box-shadow: 0 0 15px rgba(153, 0, 255, 0.4);
+}
+
+ul {
+  margin-top: 10px;
+  margin-left: 20px;
+}
+
+.pagination {
+  text-align: center;
+  margin-top: 60px;
+}
+
+.pagination button {
+  background: linear-gradient(90deg, #6633ff, #9966ff);
+  border: none;
+  color: white;
+  font-size: 1.2em;
+  padding: 10px 16px;
+  margin: 5px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.pagination button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 10px #a366ff;
+}
+
+.pagination button.active {
+  background: linear-gradient(90deg, #3300ff, #9933ff);
+  box-shadow: 0 0 10px #a366ff;
+}
