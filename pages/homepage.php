@@ -3,7 +3,7 @@ session_start(); // <-- INI YANG HILANG. WAJIB ADA DI PALING ATAS
 ?>
 <!DOCTYPE html>
 <head>
-  <title>Ciphera Homepage</title> <link rel="stylesheet" href="homepage.css">
+  <title>Ciphera Homepage</title> <link rel="stylesheet" href="/styles/homepage.css">
 
   <link href="https://api.fontshare.com/v2/css?f[]=satoshi@1&display=swap" rel="stylesheet">
 </head>
