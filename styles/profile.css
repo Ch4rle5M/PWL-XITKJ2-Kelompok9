@@ -1,0 +1,150 @@
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #000000;
+  color: white;
+}
+
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 30px;
+  background: rgba(20, 0, 30, 0.6);
+  backdrop-filter: blur(8px);
+  border-bottom: 2px solid transparent;
+  border-image: linear-gradient(to right, #ff00cc, #6600ff);
+  border-image-slice: 1;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  padding-right: 7rem;
+}
+
+.logo img {
+  height: 4rem;
+}
+.menu {
+  display: flex;
+  gap: 90px;
+}
+
+.menu a {
+  background: rgba(90, 0, 120, 0.5);
+  color: #fff;
+  border: 1px solid #bb66ff;
+  padding: 8px 16px;
+  cursor: pointer;
+  border-radius: 6px;
+  font-weight: bold;
+  transition: all 0.25s ease-in-out;
+  text-decoration: none;
+}
+.menu a:hover {
+  background: #6600cc;
+  box-shadow: 0 0 10px #aa55ff, 0 0 20px #6600ff;
+  transform: translateY(-2px);
+}
+
+.content {
+  display: flex;
+  justify-content: center;  
+  align-items: center;      
+  height: calc(100vh - 80px); 
+}
+
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+  gap: 20px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  background-color: #000;
+  padding: 10px 20px;
+  border-bottom: 3px solid #7e3aff;
+}
+
+.profile-container {
+  background-color: #000611;
+  padding: 20px;
+  margin: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.user-info p {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.username, .rank, .score {
+  color: #7960da;
+  font-weight: bold;
+  font-size: 24px;
+}
+
+.star-icon {
+  color: #ffef59;
+  margin-right: 8px;
+  font-size: 24px;
+}
+
+.leaderboard-button {
+  background-color: #3c82f6;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+}
+
+
+.solved-challenges-section {
+  margin: 0 20px 40px;
+  background-color: #000611;
+  border-radius: 4px;
+}
+
+.solved-challenges-section h2 {
+  background-color: #3c82f6;
+  padding: 10px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 18px;
+  color: white;
+  border-radius: 4px 4px 0 0;
+}
+
+.challenge-list {
+  background-color: #2e007d;
+  border-radius: 0 0 4px 4px;
+}
+
+.challenge-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 20px;
+  border-top: 1px solid black;
+  font-size: 16px;
+  font-weight: 600;
+  color: white;
+}
+
+.challenge-item p {
+  margin: 0;
+}
+
+.challenge-score {
+  font-size: 20px;
+  font-weight: 800;
+}
