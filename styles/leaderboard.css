@@ -78,6 +78,7 @@ body {
   text-align: center;
   display: inline-block;
   font-size: 15px;
+  margin-left: 20px;
 }
 
 .leaderboard-container {
@@ -93,6 +94,7 @@ body {
   text-align: center;
   border-radius: 4px;
   margin-bottom: 18px;
+  margin-left: 52px;
 }
 
 .leaderboard-list {
