@@ -15,13 +15,13 @@ $confirm_password = $_POST['confirm_password'];
 
 if (empty($username) || empty($email) || empty($password) || empty($confirm_password)) {
     $_SESSION['error'] = "Semua field wajib diisi!";
-    header("Location: ../../signup.php");
+    header("Location: ../../pages/signup.php");
     exit;
 }
 
 if ($password !== $confirm_password) {
     $_SESSION['error'] = "Password dan Konfirmasi Password tidak cocok!";
-    header("Location: ../../signup.php");
+    header("Location: ../../pages/signup.php");
     exit;
 }
 
@@ -42,7 +42,7 @@ try {
         }
         
         $stmt_check->close();
-        header("Location: ../../signup.php");
+        header("Location: ../../pages/signup.php");
         exit;
     }
     
@@ -56,11 +56,11 @@ try {
 
     if ($stmt_insert->execute()) {
         $_SESSION['success'] = "Registrasi berhasil! Silakan login.";
-        header("Location: ../../login.php");
+        header("Location: ../../pages/login.php");
         exit;
     } else {
         $_SESSION['error'] = "Terjadi kesalahan pada server. Gagal mendaftar.";
-        header("Location: ../../signup.php");
+        header("Location: ../../pages/signup.php");
         exit;
     }
 

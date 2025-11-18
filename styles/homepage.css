@@ -284,6 +284,40 @@ body {
   color: black;
 }
 
+@keyframes gradient-scroll {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
+
+.choose-card .learn-button {
+  display: inline-block;
+  padding: 10px 24px;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 20px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 2px solid transparent; 
+  background:
+    linear-gradient(transparent, transparent) padding-box,
+    linear-gradient(to right, #367BF0, #8A38F5) border-box;
+}
+
+.choose-card .learn-button:hover {
+
+  background: linear-gradient(to right, #367BF0, #8A38F5);
+  border-color: transparent;
+  color: white; 
+}
+
+
 .footer {
   background-color: #0a0a0f;
   padding: 40px 20px 20px;

@@ -12,7 +12,7 @@ if (isset($_SESSION['error'])) {
 <!DOCTYPE html>
 <head>
   <title>Ciphera Login</title>
-  <link rel="stylesheet" href="login.css">
+  <link rel="stylesheet" href="../styles/login.css">
 
   <link href="https://api.fontshare.com/v2/css?f[]=satoshi@1&display=swap" rel="stylesheet">
 </head>
@@ -21,13 +21,13 @@ if (isset($_SESSION['error'])) {
   <div class="navbar">
     <div class="logo">
       <a href="homepage.html">
-        <img src="login/Frame 6.png" alt="Ciphera Logo">
+        <img src="/ass" alt="Ciphera Logo">
       </a>
     </div>
   <div class="menu">
-    <a href="homepage.html">Home</a>
+    <a href="homepage.php">Home</a>
     <a href="learn.html">Learn</a>
-    <a href="ctf.html">CTF</a>
+    <a href="ctf.php">CTF</a>
     <a href="community.html">Community</a>
     <a href="signup.php">Sign In</a>
     <a href="login.php">Login</a>

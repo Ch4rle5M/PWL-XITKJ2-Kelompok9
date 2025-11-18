@@ -10,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if (empty($username) || empty($password)) {
         $_SESSION['error'] = "Username dan password tidak boleh kosong.";
-        header("Location: ../../login.php");
+        header("Location: ../../pages/login.php");
         exit;
     }
     $sql = "SELECT id, username, password FROM user WHERE username = ?";
@@ -34,17 +34,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $_SESSION['user_id'] = $user['id'];
                 $_SESSION['username'] = $user['username'];
 
-                header("Location: ../../homepage.php");
+                header("Location: ../../pages/homepage.php");
                 exit;
             }
         }
         $_SESSION['error'] = "Username atau password salah.";
-        header("Location: ../../login.php");
+        header("Location: ../../pages/login.php");
         exit;
 
     } else {
         $_SESSION['error'] = "Terjadi kesalahan pada server. Silakan coba lagi.";
-        header("Location: ../../login.php");
+        header("Location: ../../pages/login.php");
         exit;
     }
 
@@ -52,7 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $conn->close();
 
 } else {
-    header("Location: ../../login.php");
+    header("Location: ../../pages/login.php");
     exit;
 }
 ?>  

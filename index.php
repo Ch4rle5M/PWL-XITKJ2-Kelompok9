@@ -1,4 +1,4 @@
 <?php
-    header('Location: pages/ctf.php');
+    header('Location: pages/profile.php');
     exit();
 ?>

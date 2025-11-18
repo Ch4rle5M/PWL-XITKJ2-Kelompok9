@@ -1,3 +1,6 @@
+<?php
+ session_start()
+?>
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -25,14 +28,24 @@
       </a>
     </div>
      <div class="menu">
-        <a href="/pages/homepage.php">Home</a>
-        <a href="/pages/level.php">Learn</a>
-        <a href="/pages/ctf.php">CTF</a>
-        <a href="/pages/community.html">Community</a>
-        <a href="/pages/signup.php">Sign Up</a>
-        <a href="/pages/login.php">Log In</a>
-        </div>
-     </div>
+  <a href="homepage.php">Home</a>
+  <a href="#learn-section">Learn</a> 
+  <a href="ctf.php">CTF</a>
+  <a href="community.php">Community</a>
+
+  <?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true): ?>
+
+    <a href="profile.php">Profile   (<?php echo htmlspecialchars($_SESSION['username']); ?>)</a>
+    <a href="/action/auth/logout.php">Logout</a>
+
+  <?php else: ?>
+
+    <a href="signup.php">Sign Up</a> 
+    <a href="login.php">Log In</a>
+
+  <?php endif; ?>
+</div>
+  </div>
 
 <main>
     <h1>Challenge</h1>

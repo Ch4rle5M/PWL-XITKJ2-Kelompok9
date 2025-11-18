@@ -6,17 +6,26 @@ session_start(); // <-- INI YANG HILANG. WAJIB ADA DI PALING ATAS
   <title>Ciphera Homepage</title> <link rel="stylesheet" href="/styles/homepage.css">
 
   <link href="https://api.fontshare.com/v2/css?f[]=satoshi@1&display=swap" rel="stylesheet">
+
+  <style>
+    html{
+      scroll-behavior: smooth;
+    }
+
+  </style>
+
 </head>
 <body>
 
   <div class="navbar">
     <div class="logo">
-      <a href="homepage.php"> <img src="Frame 6.png" alt="Ciphera Logo">
+      <a href="homepage.php"> <img src="/assets/homepage/Frame 6.png" alt="Ciphera Logo">
       </a>
     </div>
 <div class="menu">
   <a href="homepage.php">Home</a>
-  <a href="learn.php">Learn</a> <a href="ctf.php">CTF</a>
+  <a href="#learn-section">Learn</a> 
+  <a href="ctf.php">CTF</a>
   <a href="community.php">Community</a>
 
   <?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true): ?>
@@ -35,7 +44,7 @@ session_start(); // <-- INI YANG HILANG. WAJIB ADA DI PALING ATAS
 
   <section class="perkenalan">
     <div class="perkenalan-left">
-      <img src="homepage/logo-besar.png" alt="Ciphera Icon">
+      <img src="/assets/homepage/logo-besar.png" alt="Ciphera Icon">
     </div>
     <div class="perkenalan-text">
       <h1>CIPHERA</h1>
@@ -62,14 +71,14 @@ session_start(); // <-- INI YANG HILANG. WAJIB ADA DI PALING ATAS
     </div>
 
     <div class="info-img">
-      <img src="homepage/Group 10.png" alt="Circle Logo">
+      <img src="/assets/homepage/Group 10.png" alt="Circle Logo">
     </div>
   </div>
 
   <div class="info-bottom">
     
     <div class="info-img">
-      <img src="homepage/Group 11.png" alt="Binary & Key">
+      <img src="/assets/homepage/Group 11.png" alt="Binary & Key">
     </div>
 
     
@@ -82,41 +91,41 @@ session_start(); // <-- INI YANG HILANG. WAJIB ADA DI PALING ATAS
   </div>
 </section>
 
-  <h1 class="choose-title">CHOOSE</h1>
+  <h1 class="choose-title" id="learn-section">CHOOSE</h1>
 
 
-  <div class="choose-container">
+ <div class="choose-container">
 
     
     <div class="choose-card" style="background: linear-gradient(145deg, #0f0, #0a0);">
-      <img src="homepage/Frame 25.png" alt="Easy Icon" width="80">
+      <img src="/assets/homepage/Frame 25.png" alt="Easy Icon" width="80">
       <h3>Easy</h3>
       <p>
         Learn the core Linux commands—navigation, files, permissions, and more.
         A simple start, but the foundation for everything ahead.
       </p>
-      <button>Learn</button>
+            <a href="learn easy.html" class="learn-button">Learn</a>
     </div>
 
 
     <div class="choose-card" style="background: linear-gradient(145deg, #ff7b00, #b44);">
-      <img src="homepage/logo 1.png" alt="Medium Icon" width="80">
+      <img src="/assets/homepage/logo 1.png" alt="Medium Icon" width="80">
       <h3>Medium</h3>
       <p>
         Master the basics of Linux commands and start exploring beginner-friendly
         Kali tools like CyberChef.
       </p>
-      <button>Learn</button>
+            <a href="learn medium.html" class="learn-button">Learn</a>
     </div>
 
     <div class="choose-card" style="background: linear-gradient(145deg, #d00, #800);">
-      <img src="homepage/python_logo_icon_214642 1.png" alt="Python" width="80">
+      <img src="/assets/homepage/python_logo_icon_214642 1.png" alt="Python" width="80">
       <h3>Hard</h3>
       <p>
         Combine advanced Kali tools with Python scripting to solve complex,
         real-world challenges.
       </p>
-      <button>Learn</button>
+            <a href="hard.html" class="learn-button">Learn</a>
     </div>
 
   </div>
@@ -125,7 +134,7 @@ session_start(); // <-- INI YANG HILANG. WAJIB ADA DI PALING ATAS
   <footer class="footer">
     <div class="footer-container">
       <div class="footer-logo">
-        <img src="logo-besar.png" alt="CIPHERA Logo">
+        <img src="/assets/homepage/logo-besar.png" alt="CIPHERA Logo">
         <p><strong>CIPHERA</strong></p>
       </div>
       <div class="footer-team">

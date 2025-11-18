@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <head>
   <title>Ciphera Sign Up</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="../styles/login.css">
 
   <link href="https://api.fontshare.com/v2/css?f[]=satoshi@1&display=swap" rel="stylesheet">
 </head>
@@ -9,32 +9,32 @@
 
   <div class="navbar">
     <div class="logo">
-      <a href="home.html">
-        <img src="Frame 6.png" alt="Ciphera Logo">
+      <a href="homepage.php">
+        <img src="../assets/Frame 6.png" alt="Ciphera Logo">
       </a>
     </div>
     <div class="menu">
-      <a href="home.html">Home</a>
+      <a href="homepage.php">Home</a>
       <a href="learn.html">Learn</a>
-      <a href="ctf.html">CTF</a>
+      <a href="ctf.php">CTF</a>
       <a href="community.html">Community</a>
-      <a href="signin.html">Sign In</a>
-      <a href="login.html">Log In</a>
+      <a href="signin.php">Sign In</a>
+      <a href="login.php">Log In</a>
     </div>
   </div>
 
   
-  <div class="container1">
+  <div class="container">
 
-    <div class="container3">
+    <div class="container2">
          
     <div class="left-box">
       <h2>Cryptograph is the <br> best category</h2>
       </div>
 
-      <div class="signup-box">
+      <div class="login-box">
         <h2>Sign Up</h2>
-        <form action="/action/auth/regis.php" method="POST">
+        <form action="../action/auth/regis.php" method="POST">
         <label>Username</label>
         <input type="text" name="username" placeholder="Enter username">
         <label>Email</label>
