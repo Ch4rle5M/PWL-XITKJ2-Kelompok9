@@ -10,16 +10,16 @@ if (!isset($_SESSION['username']) || !isset($_SESSION['user_id'])) {
 $userId = $_SESSION['user_id'];
 $username = $_SESSION['username'];
 
+// 1. CEK ROLE
 $stmtRole = $conn->prepare("SELECT role FROM user WHERE id = ?");
 $stmtRole->bind_param("i", $userId);
 $stmtRole->execute();
 $resRole = $stmtRole->get_result();
 $userData = $resRole->fetch_assoc();
-
 $userRole = $userData['role'] ?? 'player'; 
 $stmtRole->close();
 
-
+// 2. HITUNG SCORE PRIBADI & LIST CHALLENGE
 $totalScore = 0;
 $solvedChallenges = [];
 
@@ -39,9 +39,41 @@ while ($row = $result->fetch_assoc()) {
     $totalScore += $row['score'];
 }
 $stmt->close();
-$conn->close();
 
-$rank = "N/A"; 
+
+// --- [LOGIC BARU] HITUNG RANKING ---
+// Kita ambil data leaderboard (sama persis kayak query di leaderboard.php)
+// Biar urutannya konsisten.
+$sqlRank = "SELECT u.id, COALESCE(SUM(c.score), 0) as total_score
+            FROM user u
+            LEFT JOIN user_solves us ON u.id = us.user_id
+            LEFT JOIN challenges c ON us.challenge_id = c.challenge_id
+            GROUP BY u.id
+            ORDER BY total_score DESC, u.username ASC";
+
+$rankResult = $conn->query($sqlRank);
+$rank = "N/A"; // Default kalau error
+
+if ($rankResult) {
+    $currentPosition = 1;
+    // Loop semua user dari skor tertinggi
+    while ($row = $rankResult->fetch_assoc()) {
+        // Kalau ID di list sama dengan ID user yang login
+        if ($row['id'] == $userId) {
+            $rank = "#" . $currentPosition;
+            break; // Stop looping, udah ketemu
+        }
+        $currentPosition++;
+    }
+}
+
+// Styling Warna Rank (Opsional, biar keren)
+$rankColor = "white";
+if ($rank == "#1") $rankColor = "#ffd700";      // Emas
+elseif ($rank == "#2") $rankColor = "#c0c0c0";  // Perak
+elseif ($rank == "#3") $rankColor = "#cd7f32";  // Perunggu
+
+$conn->close();
 ?>
 
 <!DOCTYPE html>
@@ -56,9 +88,12 @@ $rank = "N/A";
             background-color: #e74c3c !important;
             margin-left: 10px;
         }
+        /* Animasi dikit buat rank */
+        .rank { font-weight: 900; font-size: 1.2em; }
     </style>
 </head>
 <body>
+    
     <?php include $_SERVER['DOCUMENT_ROOT'] . './components/navbar.php'; ?>
 
     <main class="profile-container">
@@ -69,7 +104,8 @@ $rank = "N/A";
                 <p><strong>Role :</strong> <span style="color: red; font-weight:bold;">ADMINISTRATOR</span></p>
             <?php endif; ?>
 
-            <p><strong>Rank :</strong> <span class="rank"><?php echo $rank; ?></span></p>
+            <p><strong>Rank :</strong> <span class="rank" style="color: <?php echo $rankColor; ?>;"><?php echo $rank; ?></span></p>
+            
             <p>
                 <span class="star-icon">★</span> 
                 <span class="score"><?php echo $totalScore; ?></span>

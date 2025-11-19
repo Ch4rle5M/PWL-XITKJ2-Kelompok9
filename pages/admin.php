@@ -22,7 +22,6 @@ $listUsers = $conn->query("SELECT * FROM user ORDER BY id DESC");
   <title>Admin Panel — CIPHERA</title>
   <link rel="stylesheet" href="../styles/admin.css" />
   <style>
-    /* CSS Admin Dashboard (Sama kek sebelumnya) */
     body { background: #07090b; color: white; font-family: sans-serif; margin: 0; }
     .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
     .admin-wrapper { display: flex; gap: 20px; margin-top: 20px; }
@@ -35,7 +34,6 @@ $listUsers = $conn->query("SELECT * FROM user ORDER BY id DESC");
     .form-group { margin-bottom: 15px; }
     .form-group label { display: block; color: #bb66ff; margin-bottom: 8px; font-weight: bold; }
     .form-input { width: 100%; padding: 12px; background: #0b0b0f; border: 1px solid #6600cc; color: white; border-radius: 6px; box-sizing: border-box; }
-    /* Style khusus input file biar ga jelek */
     input[type="file"] { padding: 10px; background: #1e1e2f; cursor: pointer; }
     .btn-submit { background: #24c36b; color: black; font-weight: bold; padding: 12px 24px; border: none; cursor: pointer; margin-top: 10px; border-radius: 6px; width: 100%; }
     .alert { padding: 15px; margin-bottom: 20px; border-radius: 6px; font-weight: bold; }
@@ -53,7 +51,7 @@ $listUsers = $conn->query("SELECT * FROM user ORDER BY id DESC");
 
   <div class="container">
     <div style="display:flex; justify-content:space-between; align-items:center;">
-        <h2>👑 Admin Panel</h2>
+        <h2>Admin Panel</h2>
         <span>Admin: <strong style="color:#bb66ff;"><?php echo htmlspecialchars($_SESSION['username']); ?></strong></span>
     </div>
 
@@ -98,12 +96,6 @@ $listUsers = $conn->query("SELECT * FROM user ORDER BY id DESC");
                         <input list="cat_list" name="category" class="form-input" placeholder="Ketik kategori..." required>
                         <datalist id="cat_list">
                             <option value="Cryptography">
-                            <option value="Web Exploitation">
-                            <option value="Reverse Engineering">
-                            <option value="Forensic">
-                            <option value="Binary Exploitation">
-                            <option value="OSINT">
-                            <option value="Network">
                         </datalist>
                     </div>
 
@@ -172,8 +164,14 @@ $listUsers = $conn->query("SELECT * FROM user ORDER BY id DESC");
                             <td>
                                 <form method="POST" action="/action/admin/handler.php" style="display:flex; gap:5px;">
                                     <input type="hidden" name="target_user_id" value="<?php echo $user['id']; ?>">
-                                    <button type="submit" name="action_type" value="promote" name="action_user" style="background:blue; color:white; border:none; padding:4px;">Promote</button>
-                                    <button type="submit" name="action_type" value="kick" name="action_user" style="background:red; color:white; border:none; padding:4px;" onclick="return confirm('Kick?');">Kick</button>
+
+                                    <?php if($user['role'] !== 'admin'): ?>
+                                        <button type="submit" name="action_type" value="promote" name="action_user" style="background:blue; color:white; border:none; padding:4px; cursor:pointer; border-radius:4px;">Promote</button>
+                                        <button type="submit" name="action_type" value="reset_pass" name="action_user" onclick="return confirm('Reset password user ini jadi 123456?')" style="background:orange; color:black; border:none; padding:4px; cursor:pointer; border-radius:4px;">Reset Pass</button>
+                                        <button type="submit" name="action_type" value="kick" name="action_user" onclick="return confirm('Kick user ini?')" style="background:red; color:white; border:none; padding:4px; cursor:pointer; border-radius:4px;">Kick</button>
+                                    <?php else: ?>
+                                        <button type="submit" name="action_type" value="demote" name="action_user" style="background:gray; color:white; border:none; padding:4px; cursor:pointer; border-radius:4px;">Demote</button>
+                                    <?php endif; ?>
                                     <input type="hidden" name="action_user" value="1">
                                 </form>
                             </td>

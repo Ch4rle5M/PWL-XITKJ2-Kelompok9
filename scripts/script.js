@@ -87,3 +87,35 @@ async function handleFlagSubmit(event) {
 
 
 flagForm.addEventListener("submit", handleFlagSubmit);
+
+
+
+      document.getElementById('modal-flag-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const flagInput = document.getElementById('modal-flag-input').value;
+
+        fetch('/secret/flag.php', { 
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ challengeId: currentChallengeId, flag: flagInput })
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Server Error: " + response.statusText);
+            }
+            return response.json();
+        })
+        .then(data => {
+            if (data.status === 'correct') {
+                alert("🎉 " + data.message); closeModal(); location.reload(); 
+            } else if (data.status === 'already') {
+                alert("⚠️ " + data.message);
+            } else {
+                alert("❌ " + data.message);
+            }
+        })
+        .catch(error => { 
+            console.error('Error:', error); 
+            alert("Terjadi kesalahan sistem! Cek Console (F12) untuk detail."); 
+        });
+      });

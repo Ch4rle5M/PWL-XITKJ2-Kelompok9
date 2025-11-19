@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_chall'])) {
     $score = $_POST['score'];
     $cat   = $_POST['category'];
     
-    $dbImagePath = '/assets/flag.jpg';
+    $dbImagePath = '/assets/flag';
 
     if (isset($_FILES['image_file']) && $_FILES['image_file']['error'] === 0) {
         $allowed = ['jpg', 'jpeg', 'png', 'gif', 'webp'];
@@ -49,13 +49,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_chall'])) {
         }
     }
 
-    // Cek ID Unik
     $cek = $conn->query("SELECT challenge_id FROM challenges WHERE challenge_id = '$id'");
     if ($cek->num_rows > 0) {
         redirectBack("Gagal: ID '$id' sudah dipakai!", "error");
     }
 
-    // Insert ke Database
     $sql = "INSERT INTO challenges (challenge_id, challenge_name, description, flag, score, category, image_path) VALUES (?, ?, ?, ?, ?, ?, ?)";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("ssssiss", $id, $title, $desc, $flag, $score, $cat, $dbImagePath);
@@ -82,5 +80,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action_user'])) {
     if ($type === 'demote') $conn->query("UPDATE user SET role='player' WHERE id=$targetId");
     if ($type === 'kick') $conn->query("DELETE FROM user WHERE id=$targetId");
     redirectBack("Action user berhasil.");
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action_user'])) {
+    $targetId   = (int)$_POST['target_user_id'];
+    $actionType = $_POST['action_type'];
+
+    if ($actionType === 'promote') {
+        $conn->query("UPDATE user SET role='admin' WHERE id=$targetId");
+        redirectBack("User berhasil diangkat jadi Admin!");
+    } 
+    elseif ($actionType === 'demote') {
+        $conn->query("UPDATE user SET role='player' WHERE id=$targetId");
+        redirectBack("User diturunkan jadi Player.");
+    } 
+    elseif ($actionType === 'kick') {
+        $conn->query("DELETE FROM user WHERE id=$targetId");
+        redirectBack("User berhasil di-kick (Hapus).");
+    }
+    elseif ($actionType === 'reset_pass') {
+        $defaultPass = '123456';
+        
+        $conn->query("UPDATE user SET password='$defaultPass' WHERE id=$targetId");
+        redirectBack("Password user berhasil di-reset jadi: 123456");
+    }
 }
 ?>

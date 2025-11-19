@@ -1,17 +1,9 @@
 <?php
 session_start();
-
-require_once __DIR__ . '/../db/db-con.php';
+require_once __DIR__ . '/../db/db-con.php'; 
 
 $sql = "SELECT * FROM challenges ORDER BY score ASC";
 $result = $conn->query($sql);
-
-$assetImages = [
-    '/assets/Frame 27.png', 
-    '/assets/Frame 27 (1).png', 
-    '/assets/Frame 27 (2).png', 
-    '/assets/Frame 27 (3).png'
-];
 ?>
 
 <!DOCTYPE html>
@@ -37,55 +29,55 @@ $assetImages = [
     <div class="card-container">
 
       <?php if ($result && $result->num_rows > 0): ?>
-        
-        <?php 
-          while($row = $result->fetch_assoc()): 
-            $bgImage = !empty($row['image_path']) ? $row['image_path'] : '/assets/flag.jpg';
-            $rawDesc = isset($row['description']) ? $row['description'] : 'Deskripsi tidak tersedia.';
-            $rawCat  = isset($row['category']) ? $row['category'] : 'General';
+        <?php while($row = $result->fetch_assoc()): 
+            // --- FIX GAMBAR ---
+            $dbImg = $row['image_path'];
+            // Kalau path aneh atau gak ada .jpg/.png, paksa default
+            if (empty($dbImg) || $dbImg == 'null' || strpos($dbImg, '.') === false) {
+                $finalImg = '/assets/flag.jpg';
+            } else {
+                $finalImg = $dbImg;
+            }
+
             $jsTitle = addslashes($row['challenge_name']);
-            $jsDesc  = addslashes(str_replace(["\r", "\n"], ' ', $rawDesc)); 
+            $jsDesc  = addslashes(str_replace(["\r", "\n"], ' ', $row['description'] ?? '')); 
             $jsId    = $row['challenge_id'];
-            $jsScore = isset($row['score']) ? $row['score'] : 0; 
-            $jsFile = !empty($row['file_path']) ? "'" . $row['file_path'] . "'" : 'null';
+            $jsScore = $row['score'] ?? 0; 
+            $jsFile  = !empty($row['file_path']) ? "'" . $row['file_path'] . "'" : 'null';
+            $jsRawCat = htmlspecialchars($row['category'] ?? 'General');
         ?>
 
-      <div class="card" onclick="openModal(
-        '<?php echo $jsTitle; ?>', 
-        '<?php echo $jsDesc; ?>', 
-        '<?php echo $bgImage; ?>', 
-        <?php echo $jsFile; ?>, 
-        '<?php echo $jsId; ?>'
-      )">
-        <img src="<?php echo $bgImage; ?>" alt="Challenge Image" />
-        <div class="card-title">
-            <?php echo htmlspecialchars($row['challenge_name']); ?>
-            <br>
-            <span style="font-size: 0.8em; color: #fff44f;">
-                ⭐ <?php echo $jsScore; ?> pts | <?php echo htmlspecialchars($rawCat); ?>
-            </span>
-        </div>
-      </div>
+          <div class="card" onclick="openModal(
+            '<?php echo $jsTitle; ?>', 
+            '<?php echo $jsDesc; ?>', 
+            '<?php echo $finalImg; ?>', 
+            <?php echo $jsFile; ?>, 
+            '<?php echo $jsId; ?>'
+          )">
+            <img src="<?php echo $finalImg; ?>" alt="Img" onerror="this.src='/assets/flag.jpg';" />
+            <div class="card-title">
+                <?php echo htmlspecialchars($row['challenge_name']); ?>
+                <br>
+                <span style="font-size: 0.8em; color: #fff44f;">
+                    ⭐ <?php echo $jsScore; ?> pts | <?php echo $jsRawCat; ?>
+                </span>
+            </div>
+          </div>
 
-      <?php endwhile; ?>
-        <?php else: ?>
-        <div style="width: 100%; text-align: center; padding: 50px; color: white; grid-column: 1 / -1;">
-            <h2>Belum ada challenge.</h2>
-            <p>Pastikan Admin sudah input soal dan Database sudah diupdate.</p>
-        </div>
+        <?php endwhile; ?>
       <?php endif; ?> 
-      </div>
+    </div>
   </main>
 
   <div id="modal" class="modal">
     <div class="modal-content">
       <span class="close" onclick="closeModal()">&times;</span>
       <div class="modal-body">
-        <img src="" alt="" id="modal-img" style="max-width: 100%; border-radius: 10px;"> 
+        <img src="" alt="" id="modal-img" style="max-width: 100%; border-radius: 10px;" onerror="this.src='/assets/flag.jpg';"> 
         <div class="modal-text">
           <h2 id="modal-title">Judul</h2>          
           <p><strong>Description :</strong></p>
-          <p id="modal-desc" style="line-height: 1.6;">Desc...</p>
+          <p id="modal-desc">Desc...</p>
           <a href="#" id="modal-attachment" class="attach" download>Download Attachment</a>
           <hr style="border-color: #444; margin: 20px 0;">
           <form class="flag-form" id="modal-flag-form">
@@ -122,12 +114,17 @@ $assetImages = [
         e.preventDefault();
         const flagInput = document.getElementById('modal-flag-input').value;
 
-        fetch('/secret/flag.php', { 
+        // FETCH LANGSUNG KE ROOT SECRET
+        fetch('../action/secret/flag.php', { 
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ challengeId: currentChallengeId, flag: flagInput })
         })
-        .then(response => response.json())
+        .then(response => {
+             // Kalau response bukan 200 OK (misal 404 atau 500), throw error
+             if (!response.ok) { throw new Error("Server Error: " + response.status); }
+             return response.json();
+        })
         .then(data => {
             if (data.status === 'correct') {
                 alert("🎉 " + data.message); closeModal(); location.reload(); 
@@ -137,7 +134,10 @@ $assetImages = [
                 alert("❌ " + data.message);
             }
         })
-        .catch(error => { console.error(error); alert("Server Error / Path Salah"); });
+        .catch(error => { 
+            console.error(error); 
+            alert("ERROR SYSTEM: " + error.message + "\nCek apakah folder 'secret' ada di root project."); 
+        });
       });
   </script>
 </body>
