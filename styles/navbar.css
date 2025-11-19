@@ -1,0 +1,44 @@
+/* styles/navbar.css */
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 30px;
+  background: rgba(20, 0, 30, 0.6);
+  backdrop-filter: blur(8px);
+  border-bottom: 2px solid transparent;
+  border-image: linear-gradient(to right, #ff00cc, #6600ff);
+  border-image-slice: 1;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo img {
+  height: 4rem;
+}
+
+.menu {
+  display: flex;
+  gap: 50px;
+  margin-right: 90px;
+}
+
+.menu a {
+  background: rgba(90, 0, 120, 0.5);
+  color: #fff;
+  border: 1px solid #bb66ff;
+  padding: 15px 30px; /* INI YANG BIKIN GEDE */
+  cursor: pointer;
+  border-radius: 6px;
+  font-weight: bold;
+  transition: all 0.25s ease-in-out;
+  text-decoration: none;
+}
+
+.menu a:hover {
+  background: #6600cc;
+  box-shadow: 0 0 10px #aa55ff, 0 0 20px #6600ff;
+  transform: translateY(-2px);
+}

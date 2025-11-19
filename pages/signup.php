@@ -7,21 +7,7 @@
 </head>
 <body>
 
-  <div class="navbar">
-    <div class="logo">
-      <a href="homepage.php">
-        <img src="../assets/Frame 6.png" alt="Ciphera Logo">
-      </a>
-    </div>
-    <div class="menu">
-      <a href="homepage.php">Home</a>
-      <a href="learn.html">Learn</a>
-      <a href="ctf.php">CTF</a>
-      <a href="community.html">Community</a>
-      <a href="signin.php">Sign In</a>
-      <a href="login.php">Log In</a>
-    </div>
-  </div>
+<?php include $_SERVER['DOCUMENT_ROOT'] . './components/navbar.php'; ?>
 
   
   <div class="container">

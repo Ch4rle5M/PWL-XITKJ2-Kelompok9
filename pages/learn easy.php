@@ -7,21 +7,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-<div class="navbar">
-    <div class="logo">
-      <a href="homepage.html">
-        <img src="/assets/Frame 6.png " alt="Ciphera Logo">
-      </a>
-    </div>
-     <div class="menu">
-        <a href="homepage.html">Home</a>
-        <a href="level.html">Learn</a>
-        <a href="ctf.html">CTF</a>
-        <a href="community.html">Community</a>
-        <a href="signup.html">Sign Up</a>
-        <a href="login.html">Log In</a>
-        </div>
-     </div>
+<?php include $_SERVER['DOCUMENT_ROOT'] . './components/navbar.php'; ?>
 
     <section class="lesson">
       <div class="command">

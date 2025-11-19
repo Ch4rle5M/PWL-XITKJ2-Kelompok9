@@ -10,6 +10,16 @@ if (!isset($_SESSION['username']) || !isset($_SESSION['user_id'])) {
 $userId = $_SESSION['user_id'];
 $username = $_SESSION['username'];
 
+$stmtRole = $conn->prepare("SELECT role FROM user WHERE id = ?");
+$stmtRole->bind_param("i", $userId);
+$stmtRole->execute();
+$resRole = $stmtRole->get_result();
+$userData = $resRole->fetch_assoc();
+
+$userRole = $userData['role'] ?? 'player'; 
+$stmtRole->close();
+
+
 $totalScore = 0;
 $solvedChallenges = [];
 
@@ -31,8 +41,7 @@ while ($row = $result->fetch_assoc()) {
 $stmt->close();
 $conn->close();
 
-$rank = "#?"; //belakangan sajalah
-
+$rank = "N/A"; 
 ?>
 
 <!DOCTYPE html>
@@ -42,55 +51,46 @@ $rank = "#?"; //belakangan sajalah
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Ciphera Profile</title>
     <link rel="stylesheet" href="/styles/profile.css"/>
+    <style>
+        .admin-btn {
+            background-color: #e74c3c !important;
+            margin-left: 10px;
+        }
+    </style>
 </head>
 <body>
-  <div class="navbar">
-    <div class="logo">
-      <a href="homepage.php"> <img src="/assets/homepage/Frame 6.png" alt="Ciphera Logo">
-      </a>
-    </div>
-<div class="menu">
-  <a href="homepage.php">Home</a>
-  <a href="#learn-section">Learn</a> 
-  <a href="ctf.php">CTF</a>
-  <a href="community.php">Community</a>
-
-  <?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true): ?>
-
-    <a href="profile.php">Profile   (<?php echo htmlspecialchars($_SESSION['username']); ?>)</a>
-    <a href="/action/auth/logout.php">Logout</a>
-
-  <?php else: ?>
-
-    <a href="signup.php">Sign Up</a> 
-    <a href="login.php">Log In</a>
-
-  <?php endif; ?>
-</div>
-  </div>
+    <?php include $_SERVER['DOCUMENT_ROOT'] . './components/navbar.php'; ?>
 
     <main class="profile-container">
         <div class="user-info">
             <p><strong>Username :</strong> <span class="username"><?php echo htmlspecialchars($username); ?></span></p>
+            
+            <?php if ($userRole === 'admin'): ?>
+                <p><strong>Role :</strong> <span style="color: red; font-weight:bold;">ADMINISTRATOR</span></p>
+            <?php endif; ?>
+
             <p><strong>Rank :</strong> <span class="rank"><?php echo $rank; ?></span></p>
             <p>
                 <span class="star-icon">★</span> 
                 <span class="score"><?php echo $totalScore; ?></span>
             </p>
         </div>
-        <button class="leaderboard-button">Leaderboard</button>
+        
+        <div style="margin-top: 20px;">
+            <a href="leaderboard.php"><button class="leaderboard-button">Leaderboard</button></a>
+            
+            <?php if ($userRole === 'admin'): ?>
+                <a href="admin.php"><button class="leaderboard-button admin-btn">Admin Panel</button></a>
+            <?php endif; ?>
+        </div>
     </main>
 
     <section class="solved-challenges-section">
         <h2>Solved Challenge</h2>
         <div class="challenge-list">
-
-            <?php if (empty($solvedChallenges)): ?>
-                
+             <?php if (empty($solvedChallenges)): ?>
                 <p style="text-align: center; opacity: 0.7;">Belum ada challenge yang diselesaikan.</p>
-            
             <?php else: ?>
-                
                 <?php foreach ($solvedChallenges as $challenge): ?>
                     <div class="challenge-item">
                         <p><?php echo htmlspecialchars($challenge['challenge_name']); ?></p>
@@ -98,9 +98,7 @@ $rank = "#?"; //belakangan sajalah
                         <span class="challenge-score"><?php echo $challenge['score']; ?></span>
                     </div>
                 <?php endforeach; ?>
-            
             <?php endif; ?>
-
         </div>
     </section>
     <script src="script.js"></script>

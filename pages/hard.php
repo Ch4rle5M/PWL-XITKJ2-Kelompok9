@@ -6,20 +6,7 @@
      <link rel="stylesheet" href="/styles/hard.css">
 </head>
 <body>
-    <div class="navbar">
-         <div class="logo">
-      <a href="homepage.html">
-        <img src="/assets/Logo.png" alt="Ciphera Logo">
-      </a>
-    </div>
-     <div class="menu">
-        <a href="/pages/homepage.php">Home</a>
-        <a href="/pages/level.html">Learn</a>
-        <a href="/pages/ctf.html">CTF</a>
-        <a href="/pages/community.html">Community</a>
-        <a href="/pages/profile.html">Profile</a>
-        </div>
-     </div>
+    <?php include $_SERVER['DOCUMENT_ROOT'] . './components/navbar.php'; ?>
 
       <div class="content">
        <div class="card">

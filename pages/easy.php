@@ -11,21 +11,7 @@
 </head>
 <body>
 
-  <div class="navbar">
-    <div class="logo">
-      <a href="/pages/homepage.php">
-        <img src="/assets/Frame 6.png " alt="Ciphera Logo">
-      </a>
-    </div>
-     <div class="menu">
-        <a href="/pages/homepage.php">Home</a>
-        <a href="/pages/level.php">Learn</a>
-        <a href="/pages/ctf.php">CTF</a>
-        <a href="/pages/community.html">Community</a>
-        <a href="/pages/signup.php">Sign Up</a>
-        <a href="/pages/login.php">Log In</a>
-        </div>
-     </div>
+<?php include $_SERVER['DOCUMENT_ROOT'] . './components/navbar.php'; ?>
 
     <main class="container">
     <section class="content">

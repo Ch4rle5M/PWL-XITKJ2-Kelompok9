@@ -17,30 +17,7 @@ session_start(); // <-- INI YANG HILANG. WAJIB ADA DI PALING ATAS
 </head>
 <body>
 
-  <div class="navbar">
-    <div class="logo">
-      <a href="homepage.php"> <img src="/assets/homepage/Frame 6.png" alt="Ciphera Logo">
-      </a>
-    </div>
-<div class="menu">
-  <a href="homepage.php">Home</a>
-  <a href="#learn-section">Learn</a> 
-  <a href="ctf.php">CTF</a>
-  <a href="community.php">Community</a>
-
-  <?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true): ?>
-
-    <a href="profile.php">Profile   (<?php echo htmlspecialchars($_SESSION['username']); ?>)</a>
-    <a href="/action/auth/logout.php">Logout</a>
-
-  <?php else: ?>
-
-    <a href="signup.php">Sign Up</a> 
-    <a href="login.php">Log In</a>
-
-  <?php endif; ?>
-</div>
-  </div>
+<?php include $_SERVER['DOCUMENT_ROOT'] . './components/navbar.php'; ?>
 
   <section class="perkenalan">
     <div class="perkenalan-left">

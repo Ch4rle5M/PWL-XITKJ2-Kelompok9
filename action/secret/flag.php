@@ -3,58 +3,49 @@ session_start();
 header('Content-Type: application/json');
 
 if (!isset($_SESSION['user_id'])) {
-    echo json_encode([
-        'status' => 'error',
-        'message' => 'Anda harus login untuk submit flag.'
-    ]);
+    echo json_encode(['status' => 'error', 'message' => 'Harus login dulu.']);
     exit;
 }
 
-require_once '../db/db-con.php';
+require_once '/../db/db-con.php';
+$data = json_decode(file_get_contents('php://input'), true);
 
-$dataDariKlien = json_decode(file_get_contents('php://input'), true);
-
-$response = [
-    'status' => 'error',
-    'message' => 'Data tidak lengkap.'
-];
-
-if (isset($dataDariKlien['challengeId']) && isset($dataDariKlien['flag'])) {
-    
-    $challengeId = $dataDariKlien['challengeId'];
-    $submittedFlag = $dataDariKlien['flag'];
+if (isset($data['challengeId']) && isset($data['flag'])) {
+    $challId = $data['challengeId'];
+    $flagInput = trim($data['flag']);
     $userId = $_SESSION['user_id'];
-    
+
     $stmt = $conn->prepare("SELECT flag, score FROM challenges WHERE challenge_id = ?");
-    $stmt->bind_param("s", $challengeId);
+    $stmt->bind_param("s", $challId); 
     $stmt->execute();
     $result = $stmt->get_result();
 
-    if ($result->num_rows === 1) {
-        $challenge = $result->fetch_assoc();
-        $correctFlag = $challenge['flag'];
-
-        if ($correctFlag === $submittedFlag) {
-            $response['status'] = 'correct';
-            $response['message'] = 'Flag Correct';
-
-            $insertStmt = $conn->prepare("INSERT IGNORE INTO user_solves (user_id, challenge_id) VALUES (?, ?)");
-            $insertStmt->bind_param("is", $userId, $challengeId);
-            $insertStmt->execute();
-            $insertStmt->close();
-
+    if ($row = $result->fetch_assoc()) {
+        if ($row['flag'] === $flagInput) {
+            
+            $cek = $conn->prepare("SELECT id FROM user_solves WHERE user_id = ? AND challenge_id = ?");
+            $cek->bind_param("is", $userId, $challId);
+            $cek->execute();
+            
+            if ($cek->get_result()->num_rows > 0) {
+                echo json_encode(['status' => 'already', 'message' => 'Sudah pernah solve bang!']);
+            } else {
+                $ins = $conn->prepare("INSERT INTO user_solves (user_id, challenge_id) VALUES (?, ?)");
+                $ins->bind_param("is", $userId, $challId);
+                
+                if ($ins->execute()) {
+                    echo json_encode(['status' => 'correct', 'message' => 'Flag Benar! +' . $row['score']]);
+                } else {
+                    echo json_encode(['status' => 'error', 'message' => 'Gagal save database.']);
+                }
+            }
         } else {
-            $response['status'] = 'incorrect';
-            $response['message'] = 'Flag Incorrect';
+            echo json_encode(['status' => 'incorrect', 'message' => 'Flag Salah!']);
         }
-        
     } else {
-        $response['message'] = 'Challenge tidak valid.';
+        echo json_encode(['status' => 'error', 'message' => 'Challenge ID tidak valid.']);
     }
-    
-    $stmt->close();
+} else {
+    echo json_encode(['status' => 'error', 'message' => 'Data kurang.']);
 }
-
-$conn->close();
-echo json_encode($response);
 ?>

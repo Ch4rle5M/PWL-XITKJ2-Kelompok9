@@ -18,22 +18,7 @@ if (isset($_SESSION['error'])) {
 </head>
 <body>
 
-  <div class="navbar">
-    <div class="logo">
-      <a href="homepage.html">
-        <img src="/ass" alt="Ciphera Logo">
-      </a>
-    </div>
-  <div class="menu">
-    <a href="homepage.php">Home</a>
-    <a href="learn.html">Learn</a>
-    <a href="ctf.php">CTF</a>
-    <a href="community.html">Community</a>
-    <a href="signup.php">Sign In</a>
-    <a href="login.php">Login</a>
-
-  </div>
-  </div>
+<?php include $_SERVER['DOCUMENT_ROOT'] . './components/navbar.php'; ?>
   
   <div class="container">
     <div class="container2">
@@ -47,7 +32,6 @@ if (isset($_SESSION['error'])) {
         <label>Password</label>
         <input type="password" name="password" placeholder="Enter password">
 
-        <a href="forgot.html">Forgot Password</a>
         <button>LOGIN</button>
         </form>
     </div>
