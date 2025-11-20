@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CIPHERA | Modern Crypto</title>
-  <link rel="stylesheet" href="learn medium4.css">
+  <link rel="stylesheet" href="../styles/learn medium4.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -37,7 +37,7 @@
     </p>
 
     <div class="pagination">
-      <a href="learn medium3.html"><button>&lt;</button></a>
+      <a href="learn medium4dan5.php"><button>&lt;</button></a>
       <button class="active">5</button>
     </div>
   </main>

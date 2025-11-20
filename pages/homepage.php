@@ -1,14 +1,14 @@
 <?php
 session_start(); // <-- INI YANG HILANG. WAJIB ADA DI PALING ATAS
 ?>
-<!DOCTYPE html>
+<!DOCTYPE php>
 <head>
   <title>Ciphera Homepage</title> <link rel="stylesheet" href="/styles/homepage.css">
 
   <link href="https://api.fontshare.com/v2/css?f[]=satoshi@1&display=swap" rel="stylesheet">
 
   <style>
-    html{
+    php{
       scroll-behavior: smooth;
     }
 
@@ -81,7 +81,7 @@ session_start(); // <-- INI YANG HILANG. WAJIB ADA DI PALING ATAS
         Learn the core Linux commands—navigation, files, permissions, and more.
         A simple start, but the foundation for everything ahead.
       </p>
-            <a href="learn easy.html" class="learn-button">Learn</a>
+            <a href="easy.php" class="learn-button">Learn</a>
     </div>
 
 
@@ -92,7 +92,7 @@ session_start(); // <-- INI YANG HILANG. WAJIB ADA DI PALING ATAS
         Master the basics of Linux commands and start exploring beginner-friendly
         Kali tools like CyberChef.
       </p>
-            <a href="learn medium.html" class="learn-button">Learn</a>
+            <a href="medium.php" class="learn-button">Learn</a>
     </div>
 
     <div class="choose-card" style="background: linear-gradient(145deg, #d00, #800);">
@@ -102,7 +102,7 @@ session_start(); // <-- INI YANG HILANG. WAJIB ADA DI PALING ATAS
         Combine advanced Kali tools with Python scripting to solve complex,
         real-world challenges.
       </p>
-            <a href="hard.html" class="learn-button">Learn</a>
+            <a href="hard.php" class="learn-button">Learn</a>
     </div>
 
   </div>
@@ -133,4 +133,4 @@ session_start(); // <-- INI YANG HILANG. WAJIB ADA DI PALING ATAS
     </div>
   </footer>
 </body>
-</html>
+</php>

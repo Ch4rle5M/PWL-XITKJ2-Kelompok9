@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CIPHERA | Jenis Cipher</title>
-  <link rel="stylesheet" href="learn medium.css">
+  <link rel="stylesheet" href="../styles/learn medium2.css">
 </head>
 <body>
 <?php include $_SERVER['DOCUMENT_ROOT'] . './components/navbar.php'; ?>
@@ -51,11 +51,10 @@ A N X
       <p>Dipakai Inggris di Perang Dunia I.</p>
 
       <div class="pagination">
-        <a href="learn medium.html"><button>&lt;</button></a>
-        <a href="learn medium.html"><button>1</button></a>
+        <a href="learn medium1dan2.php"><button>&lt;</button></a>
         <button class="active">2</button>
-        <a href="learn medium2.html"><button>3</button></a>
-        <button>&gt;</button>
+        <a href="learn medium3dan4.php"><button>3</button></a>
+        <a href="learn medium3dan4.php"><button >&gt;</button></a>
       </div>
     </section>
   </main>

@@ -1,4 +1,4 @@
 <?php
-    header('Location: pages/admin.php');
+    header('Location: pages/homepage.php');
     exit();
 ?>

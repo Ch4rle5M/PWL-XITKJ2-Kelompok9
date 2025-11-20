@@ -1,0 +1,126 @@
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #000000;
+  color: white;
+}
+
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 30px;
+  background: rgba(20, 0, 30, 0.6);
+  backdrop-filter: blur(8px);
+  border-bottom: 2px solid transparent;
+  border-image: linear-gradient(to right, #ff00cc, #6600ff);
+  border-image-slice: 1;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo img {
+  height: 4rem;
+}
+.menu {
+  display: flex;
+  gap: 12px;
+}
+
+.menu a {
+  background: rgba(90, 0, 120, 0.5);
+  color: #fff;
+  border: 1px solid #bb66ff;
+  padding: 8px 16px;
+  cursor: pointer;
+  border-radius: 6px;
+  font-weight: bold;
+  transition: all 0.25s ease-in-out;
+  text-decoration: none;
+}
+.menu a:hover {
+  background: #6600cc;
+  box-shadow: 0 0 10px #aa55ff, 0 0 20px #6600ff;
+  transform: translateY(-2px);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: left;
+  margin-top: 40px; 
+  min-height: calc(100vh - 120px); 
+  margin-left: 100px;
+  
+}
+
+.slide {
+  padding: 40px;
+  border-radius: 16px;
+  width: 750px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+}
+
+h1 {
+  color: #fff;
+  font-size: 2.6rem;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+h2 {
+  margin-top: 25px;
+  font-size: 1.20rem;
+  font-variant: bold;
+}
+
+h3 {
+  margin-top: 15px;
+  font-size: 1.10rem;
+}
+
+p,
+li {
+  line-height: 1.11;
+  font-size: 1.2rem;
+}
+
+ul {
+  margin-left: 20px;
+  font-size: 1.2rem;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40px;
+}
+
+.pagination button {
+  background: linear-gradient(135deg, #8A38F5,#367BF0);
+  border: none;
+  color: white;
+  width: 60px;
+  height: 60px;
+  border-radius: 8px;
+  margin: 0 10px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1.4rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 15px rgba(125, 79, 255, 0.4);
+}
+
+.pagination button:hover {
+  transform: scale(1.12);
+  box-shadow: 0 0 25px rgba(154, 112, 255, 0.7);
+}
+
+.active {
+  background: linear-gradient(135deg, #7d4fff, #4f8cff);
+  box-shadow: 0 0 30px rgba(154, 112, 255, 0.9);
+}
