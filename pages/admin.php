@@ -77,7 +77,7 @@ $listUsers = $conn->query("SELECT * FROM user ORDER BY id DESC");
                 <form method="POST" action="/action/admin/handler.php" enctype="multipart/form-data">
                     
                     <div class="form-group">
-                        <label>ID Unik</label>
+                        <label>ID</label>
                         <input type="text" name="custom_id" class="form-input" placeholder="web01, net_hard" required>
                     </div>
                     <div class="form-group">

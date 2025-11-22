@@ -28,7 +28,7 @@
         Level ini menghadirkan tantangan tingkat lanjut yang sepenuhnya berfokus pada kriptografi dengan implementasi praktis menggunakan Python. Peserta akan diminta membongkar kelemahan algoritma enkripsi, menguji keamanan suatu cipher, atau bahkan menulis ulang fungsi enkripsi–dekripsi untuk menemukan pesan tersembunyi. Tantangan dapat mencakup brute-force kunci, manipulasi ciphertext, hingga eksploitasi algoritma yang salah diimplementasikan. Tujuannya adalah melatih peserta agar tidak hanya paham teori, tetapi juga mampu mengaplikasikan logika kriptografi dalam bentuk kode yang nyata.
       </p>
       <div class="btn">
-      <a href="../Hard lobby/hard1/hard1.html"><button>Start training</button></a>
+      <a href="hard1.php"><button>Start training</button></a>
       </div>
     </div>
       </div>

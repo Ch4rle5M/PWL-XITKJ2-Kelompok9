@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CIPHERA | Sejarah Kriptografi</title>
-  <link rel="stylesheet" href="learn medium.css">
+  <link rel="stylesheet" href="../styles/learn medium.css">
 </head>
 <body>
 <?php include $_SERVER['DOCUMENT_ROOT'] . './components/navbar.php'; ?>
@@ -60,10 +60,9 @@
       </div>
 
       <div class="pagination">
-        <button>&lt;</button>
         <button class="active">1</button>
-        <a href="learn medium1.html"><button>2</button></a>
-        <button>&gt;</button>
+        <a href="learn medium2dan3.php"><button>2</button></a>
+        <a href="learn medium2dan3.php"><button >&gt;</button></a>
       </div>
     </section>
   </main>

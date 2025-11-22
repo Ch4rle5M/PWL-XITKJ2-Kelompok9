@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CIPHERA | Encrypt Encoding</title>
-  <link rel="stylesheet" href="learn medium3.css">
+  <link rel="stylesheet" href="../styles/learn medium3.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -80,10 +80,10 @@
     </section>
 
     <div class="pagination">
-      <a href="learn medium2.html"><button>&lt;</button></a>
-      <a href="learn medium3.html"><button>4</button></a>
-      <a href="learn medium4.html"><button class="active">5</button></a>
-      <button>&gt;</button>
+      <a href="learn medium3dan4.php"><button>&lt;</button></a>
+      <a href=""><button class="active">4</button></a>
+      <a href="learn medium5.php"><button>5</button></a>
+      <a href="learn medium5.php"><button>&gt;</button></a>
     </div>
   </main>
 </body>

@@ -7,7 +7,7 @@
 
  
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/styles/easy.css" />
+  <link rel="stylesheet" href="../styles/easy.css" />
 </head>
 <body>
 
@@ -38,7 +38,7 @@
         Level ini berfokus pada penguasaan perintah dasar Command Line Interface (CLI) di Linux sebagai fondasi sebelum masuk ke dunia kriptografi dan forensik digital. Peserta akan belajar navigasi file system, manajemen file, serta penggunaan command sederhana yang menjadi dasar penting dalam setiap proses investigasi maupun analisis keamanan.
       </p>
 
-      <a class="cta" href="learn easy.html">Start training</a>
+      <a class="cta" href="learn easy.php">Start training</a>
     </section>
 
     <aside class="visual">

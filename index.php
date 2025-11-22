@@ -1,4 +1,4 @@
 <?php
-    header('Location: pages/communitypage.php');
+    header('Location: pages/homepage.php');
     exit();
 ?>

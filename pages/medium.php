@@ -7,7 +7,7 @@
 
  
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="easy.css" />
+  <link rel="stylesheet" href="../styles/medium.css" />
 </head>
 <body>
 
@@ -38,12 +38,12 @@
         Pada level ini, tantangan lebih kompleks dengan kombinasi berbagai teknik kriptografi modern maupun klasik. Peserta mungkin harus mengeksploitasi kelemahan algoritma enkripsi, melakukan serangan analisis frekuensi, memecahkan substitution maupun transposition cipher, hingga memahami implementasi kriptografi yang salah (misalnya padding oracle atau weak key). Level ini melatih pemikiran kritis, ketelitian dalam analisis cipher, serta pemahaman mendalam tentang konsep keamanan kriptografi.
       </p>
 
-      <a class="cta" href="learn medium.html">Start training</a>
+      <a class="cta" href="learn medium1dan2.php">Start training</a>
     </section>
 
     <aside class="visual">
       <div class="circle">
-        <img src="palak.png" alt="Kali logo">
+        <img src="../assets/palak.png" alt="Kali logo">
       </div>
     </aside>
   </main>
