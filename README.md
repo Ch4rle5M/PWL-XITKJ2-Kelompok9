@@ -2,6 +2,11 @@
 
 *A Comprehensive Cryptography Learning & CTF Training Platform*
 
+![License](https://img.shields.io/badge/License-MIT-blue.svg)
+![PHP](https://img.shields.io/badge/PHP-8.0%2B-purple)
+![MySQL](https://img.shields.io/badge/Database-MySQL-orange)
+![Status](https://img.shields.io/badge/Status-Active-brightgreen)
+
 Ciphera is an educational platform designed to explore the world of
 **cryptography**, from basic Linux CLI commands to solving complex
 **Capture The Flag (CTF)** challenges.
