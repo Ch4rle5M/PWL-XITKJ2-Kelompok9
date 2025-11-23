@@ -177,13 +177,11 @@ We welcome contributions from anyone who wants to help improve Ciphera!
   -----------------------------------------------------------------------
   Name              Role
   ----------------- -----------------------------------------------------
-  **Charles         UI Design, Backend Design, Frontend Development
-  Marselino**       
+  **Charles Marselino |  UI Design, Backend Design, Frontend Development**       
 
-  **Clarence        Frontend Development
-  Cristiano**       
+  **ClarenceCristiano | Frontend Development**       
 
-  **Fani**          Frontend Development, UI Design
+  **Fani              | Frontend Development, UI Design**        
   -----------------------------------------------------------------------
 
 ------------------------------------------------------------------------
