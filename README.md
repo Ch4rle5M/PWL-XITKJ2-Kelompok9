@@ -3,9 +3,15 @@
 *A Comprehensive Cryptography Learning & CTF Training Platform*
 
 ![License](https://img.shields.io/badge/License-MIT-blue.svg)
+![Status](https://img.shields.io/badge/Status-Active-brightgreen)
+![Last Commit](https://img.shields.io/github/last-commit/Ch4rle5M/PWL-XITKJ2-Kelompok9)
+
 ![PHP](https://img.shields.io/badge/PHP-8.0%2B-purple)
 ![MySQL](https://img.shields.io/badge/Database-MySQL-orange)
-![Status](https://img.shields.io/badge/Status-Active-brightgreen)
+![Apache](https://img.shields.io/badge/apache-%23D42029.svg?logo=apache&logoColor=white)
+![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?logo=javascript&logoColor=%23F7DF1E)
 
 Ciphera is an educational platform designed to explore the world of
 **cryptography**, from basic Linux CLI commands to solving complex
