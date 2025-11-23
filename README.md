@@ -1,90 +1,195 @@
 # 🔐 Ciphera
-### A Comprehensive Cryptography Learning & CTF Training Platform
 
-![License](https://img.shields.io/badge/License-MIT-blue.svg)
-![PHP](https://img.shields.io/badge/PHP-8.0%2B-purple)
-![MySQL](https://img.shields.io/badge/Database-MySQL-orange)
-![Status](https://img.shields.io/badge/Status-Active-brightgreen)
+*A Comprehensive Cryptography Learning & CTF Training Platform*
 
-> **"Unlock the secrets, understand the logic, and master the art of hidden messages."**
+Ciphera is an educational platform designed to explore the world of
+**cryptography**, from basic Linux CLI commands to solving complex
+**Capture The Flag (CTF)** challenges.\
+It provides structured learning modules, real-time challenge
+interaction, and a full admin control panel --- built for beginners and
+cybersecurity enthusiasts.
 
----
+> *"Unlock the secrets, understand the logic, and master the art of
+> hidden messages."*
 
-## 📖 Table of Contents
-1. [About the Project](#-about-the-project)
-2. [Key Features](#-key-features)
-3. [Tech Stack](#-tech-stack)
-4. [Project Architecture](#-project-structure)
-5. [Installation & Setup](#-installation--setup)
-6. [Database Configuration](#-database-setup)
-7. [Technical Highlights](#-technical-notes)
-8. [Team & Task Division](#-team-members--task-division)
-9. [Contributing](#-contributing)
-10. [License](#-license)
+------------------------------------------------------------------------
 
----
-
-## 💡 About the Project
-
-**Ciphera** is an educational platform designed to bridge the gap between theory and practice in cybersecurity. From basic Linux CLI usage to solving real Capture The Flag (CTF) challenges, Ciphera serves as a training ground for beginners and enthusiasts.
-
-It features a robust system for managing challenges, tracking user progress via leaderboards, and providing a hands-on environment for learning modern cryptography.
-
----
-
-## 🌟 Key Features
+## 🌟 Features
 
 ### 🎓 Learning Modules
-* **Easy:** Introduction to Linux CLI, file permissions, and basic navigation.
-* **Medium:** Classical ciphers (Caesar, Vigenère), Base64/Hex encoding, and CyberChef usage.
-* **Hard:** Modern cryptography, Python scripting, and real-world case studies.
 
-### 🚩 CTF System
-* **Secure Attachments:** Download challenge files safely (ZIP/Image).
-* **Real-time Verification:** Instant flag checking system.
-* **Dynamic Scoring:** Points awarded based on difficulty.
-* **Modal Interface:** Clean, popup-style challenge details.
+-   **Easy** --- Basic Linux CLI, permissions, introductory navigation\
+-   **Medium** --- Classical ciphers, Base64/Hex encoding, CyberChef
+    basics\
+-   **Hard** --- Modern cryptography with Python + real security case
+    studies
+
+### 🚩 Capture The Flag (CTF) System
+
+-   Secure challenge downloads (ZIP/Image)\
+-   Real-time flag submission & verification\
+-   Dynamic scoring based on difficulty
 
 ### 🛠️ Admin Panel
-* **CRUD Management:** Create, Read, Update, and Delete challenges easily.
-* **File Management:** Upload local files or attach external resource links.
-* **User Control:** Role management (Promote/Demote), kick users, or reset passwords.
-* **Dashboard:** Visual overview of platform activity.
+
+-   Centralized dashboard\
+-   Complete challenge CRUD (upload ZIP/TXT or use external links)\
+-   User role management (promote, demote, kick, reset passwords)
 
 ### 🏆 Community & Gamification
-* **Leaderboard:** Real-time ranking of top players.
-* **User Profiles:** Track completion statistics and solved challenges.
 
----
+-   Live leaderboard\
+-   User profiles with progress tracking
+
+------------------------------------------------------------------------
 
 ## 🛠️ Tech Stack
 
-| Component | Technology | Description |
-| :--- | :--- | :--- |
-| **Frontend** | HTML5, CSS3, JS | Glassmorphism UI design, Responsive layout |
-| **Backend** | PHP Native | Object-Oriented Programming (OOP), Secure routing |
-| **Database** | MySQL / MariaDB | Relational database for users and challenges |
-| **Server** | Apache | Tested on Laragon and XAMPP |
+-   **Frontend**: HTML5, CSS3 (Glassmorphism UI), JavaScript\
+-   **Backend**: PHP Native (OOP DB Connection)\
+-   **Database**: MySQL / MariaDB\
+-   **Server Environment**: Apache (Laragon/XAMPP)
 
----
+------------------------------------------------------------------------
 
 ## 🏗️ Project Structure
 
-The project follows a structured MVC-style organization for maintainability.
+    PWL-XITKJ2-Kelompok9/
+    │── action/
+    │   ├── admin/        # Admin handlers (CRUD, uploads)
+    │   ├── auth/         # Login, Register, Logout
+    │   ├── challenge/    # Challenge logic
+    │   └── secret/       # Flag verification
+    │       └── chall/    # Main CTF challenge logic
+    │
+    │── assets/
+    │   ├── homepage/
+    │   ├── login/
+    │   └── uploads/      # Challenge attachments (auto-generated)
+    │
+    │── index.php
+    │── README.md
 
-```text
-PWL-XITKJ2-Kelompok9/
-│── action/
-│   ├── admin/        # Admin handlers (CRUD, uploads, user mgmt)
-│   ├── auth/         # Authentication (Login, Register, Logout)
-│   ├── challenge/    # Challenge logic and display
-│   └── secret/       # Flag verification logic
-│       └── chall/    # Main challenge processing
-│
-│── assets/
-│   ├── homepage/     # Landing page assets
-│   ├── login/        # Auth page styles
-│   └── uploads/      # Auto-created directory for challenge files
-│
-│── index.php         # Entry point / Router
-│── README.md         # Documentation
+------------------------------------------------------------------------
+
+## 📦 Installation & Setup
+
+### 1️⃣ Clone the Repository
+
+``` bash
+git clone https://github.com/Ch4rle5M/PWL-XITKJ2-Kelompok9.git
+cd PWL-XITKJ2-Kelompok9
+```
+
+### 2️⃣ Move Project to Server Folder
+
+-   **Laragon:** `C:/laragon/www/`\
+-   **XAMPP:** `C:/xampp/htdocs/`
+
+Start **Apache** and **MySQL**.
+
+### 3️⃣ Database Setup (PhpMyAdmin)
+
+1.  Open PhpMyAdmin → **New**\
+
+2.  Create database named:
+
+        ta_pwl
+
+3.  Go to **Import** and select the provided `.sql` file\
+
+4.  Done ✔️
+
+### 4️⃣ Update PHP Upload Configuration
+
+Open `php.ini` and edit:
+
+    upload_max_filesize = 100M
+    post_max_size = 100M
+
+Restart Apache.
+
+------------------------------------------------------------------------
+
+## 🚀 Usage
+
+### Access the Website
+
+    http://localhost/PWL-XITKJ2-Kelompok9/
+
+### Default Admin Login
+
+    Username: User
+    Password: admin123
+
+### Creating a Challenge (Admin)
+
+-   Go to **Profile → Admin Panel**\
+-   Fill in "Create Challenge" form\
+-   Upload physical file (ZIP/TXT) or insert external link (Google
+    Drive, GitHub, etc.)
+
+------------------------------------------------------------------------
+
+## 📝 Technical Notes
+
+### 🔧 Upload Handler
+
+-   Uses `__DIR__` for accurate absolute pathing\
+-   Auto-creates `/uploads` folder\
+-   Sanitizes file paths (path traversal protection)\
+-   Auto-detects local file vs external link in frontend
+
+### 🔒 Security
+
+-   Session-based authentication\
+-   Prepared statements (SQL Injection defense)\
+-   Sanitized download handler\
+-   Admin-only access restrictions
+
+------------------------------------------------------------------------
+
+## 🤝 Contributing
+
+We welcome contributions from anyone who wants to help improve Ciphera!
+
+### How to Contribute
+
+1.  **Fork** the repository\
+2.  Create a new **branch**\
+3.  **Commit** changes with clear messages\
+4.  **Push** your branch\
+5.  Open a **Pull Request**
+
+### Contribution Guidelines
+
+-   Keep code clean & documented\
+-   Test new features properly\
+-   Respect collaborative discussions
+
+> Together, we can make Ciphera a better cryptography learning platform!
+> 🚀
+
+------------------------------------------------------------------------
+
+## 👥 Team Members
+
+  -----------------------------------------------------------------------
+  Name              Role
+  ----------------- -----------------------------------------------------
+  **Charles Marselino |  UI Design, Backend Design, Frontend Development**       
+
+  **ClarenceCristiano | Frontend Development**       
+
+  **Fani              | Frontend Development, UI Design**        
+  -----------------------------------------------------------------------
+
+------------------------------------------------------------------------
+
+## 📄 License
+
+This project is licensed under the **MIT License**.\
+You may use, modify, and redistribute it as long as proper credit is
+provided.
+
+------------------------------------------------------------------------
