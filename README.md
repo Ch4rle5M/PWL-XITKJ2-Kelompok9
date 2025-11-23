@@ -1,4 +1,4 @@
-# 🔐 Ciphera
+# 🔐 Ciphera v2
 
 *A Comprehensive Cryptography Learning & CTF Training Platform*
 
