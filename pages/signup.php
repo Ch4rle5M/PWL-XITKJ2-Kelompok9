@@ -13,7 +13,10 @@ if (isset($_SESSION['error'])) {
 ?>
 
 <!DOCTYPE html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ciphera Sign Up</title>
   <link rel="stylesheet" href="../styles/login.css">
   <link href="https://api.fontshare.com/v2/css?f[]=satoshi@1&display=swap" rel="stylesheet">
@@ -25,8 +28,8 @@ if (isset($_SESSION['error'])) {
   <div class="container">
     <div class="container2">
          
-    <div class="left-box">
-      <h2>Cryptograph is the <br> best category</h2>
+      <div class="left-box">
+        <h2>Cryptograph is the <br> best category</h2>
       </div>
 
       <div class="login-box">

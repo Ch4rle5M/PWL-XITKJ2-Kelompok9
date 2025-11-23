@@ -1,3 +1,6 @@
+<?php
+session_start(); 
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -47,9 +50,7 @@
 
      <div class="pagination">
   <a href="hard1.php"><button><</button></a>
-  <a href="hard2.php"><button>2</button></a>
-  <a href="hard3.php"><button>3</button></a>
-  <a href="hard3.php"><button>></button></a>
+  <a href="hard1.php"><button>1</button></a>
 </div>    
 
     </main> 

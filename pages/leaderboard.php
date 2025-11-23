@@ -16,7 +16,7 @@ $result = $conn->query($sql);
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CIPHERA Leaderboard</title>
   <link rel="stylesheet" href="/styles/leaderboard.css" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
@@ -26,42 +26,41 @@ $result = $conn->query($sql);
 <?php include $_SERVER['DOCUMENT_ROOT'] . './components/navbar.php'; ?>
       
   <main>
-    <button class="back-btn" onclick="window.location.href='profile.php'">← Back to Profile</button>
+    <div class="leaderboard-wrapper">
+        <button class="back-btn" onclick="window.location.href='profile.php'">← Back to Profile</button>
 
-    <section class="leaderboard-container">
-      <div class="leaderboard-title">Leaderboard</div>
+        <section class="leaderboard-container">
+            <div class="leaderboard-title">Leaderboard</div>
 
-      <ul class="leaderboard-list">
-        <?php 
-        if ($result && $result->num_rows > 0):
-            $rank = 1;
-            while($row = $result->fetch_assoc()): 
-                // Logic CSS Class untuk Juara 1, 2, 3
-                $rankClass = "rank";
-                if ($rank == 1) $rankClass .= " rank-1";
-                elseif ($rank == 2) $rankClass .= " rank-2";
-                elseif ($rank == 3) $rankClass .= " rank-3";
-        ?>
-            <li class="leaderboard-entry">
-                <span class="<?php echo $rankClass; ?>">#<?php echo $rank; ?></span> 
-                
-                <span class="username"><?php echo htmlspecialchars($row['username']); ?></span> 
-                
-                <span class="score">
-                    <span>★</span> <?php echo number_format($row['total_score']); ?>
-                </span>
-            </li>
-        <?php 
-            $rank++;
-            endwhile;
-        else: 
-        ?>
-            <li class="leaderboard-entry" style="justify-content: center; opacity: 0.7;">
-                Belum ada player yang solve challenge.
-            </li>
-        <?php endif; ?>
-      </ul>
-    </section>
+            <ul class="leaderboard-list">
+                <?php 
+                if ($result && $result->num_rows > 0):
+                    $rank = 1;
+                    while($row = $result->fetch_assoc()): 
+                        $rankClass = "rank";
+                        if ($rank == 1) $rankClass .= " rank-1";
+                        elseif ($rank == 2) $rankClass .= " rank-2";
+                        elseif ($rank == 3) $rankClass .= " rank-3";
+                ?>
+                    <li class="leaderboard-entry">
+                        <span class="<?php echo $rankClass; ?>">#<?php echo $rank; ?></span> 
+                        <span class="username"><?php echo htmlspecialchars($row['username']); ?></span> 
+                        <span class="score">
+                            <span>★</span> <?php echo number_format($row['total_score']); ?>
+                        </span>
+                    </li>
+                <?php 
+                    $rank++;
+                    endwhile;
+                else: 
+                ?>
+                    <li class="leaderboard-entry" style="justify-content: center; opacity: 0.7;">
+                        No players have solved challenges yet.
+                    </li>
+                <?php endif; ?>
+            </ul>
+        </section>
+    </div>
   </main>
 
 </body>

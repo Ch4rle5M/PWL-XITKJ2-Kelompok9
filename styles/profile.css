@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
@@ -5,84 +9,21 @@ body {
   color: white;
 }
 
-
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 12px 30px;
-  background: rgba(20, 0, 30, 0.6);
-  backdrop-filter: blur(8px);
-  border-bottom: 2px solid transparent;
-  border-image: linear-gradient(to right, #ff00cc, #6600ff);
-  border-image-slice: 1;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  padding-right: 7rem;
-}
-
-.logo img {
-  height: 4rem;
-}
-.menu {
-  display: flex;
-  gap: 90px;
-}
-
-.menu a {
-  background: rgba(90, 0, 120, 0.5);
-  color: #fff;
-  border: 1px solid #bb66ff;
-  padding: 8px 16px;
-  cursor: pointer;
-  border-radius: 6px;
-  font-weight: bold;
-  transition: all 0.25s ease-in-out;
-  text-decoration: none;
-}
-.menu a:hover {
-  background: #6600cc;
-  box-shadow: 0 0 10px #aa55ff, 0 0 20px #6600ff;
-  transform: translateY(-2px);
-}
-
-.content {
-  display: flex;
-  justify-content: center;  
-  align-items: center;      
-  height: calc(100vh - 80px); 
-}
-
-
-.container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 90vh;
-  gap: 20px;
-}
-
-.header {
-  display: flex;
-  align-items: center;
-  background-color: #000;
-  padding: 10px 20px;
-  border-bottom: 3px solid #7e3aff;
-}
-
 .profile-container {
   background-color: #000611;
-  padding: 20px;
-  margin: 20px;
+  padding: 30px;
+  margin: 20px auto;
+  max-width: 1000px;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
+  border-radius: 8px;
+  flex-wrap: wrap;
 }
 
 .user-info p {
   font-size: 18px;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 
 .username, .rank, .score {
@@ -97,54 +38,98 @@ body {
   font-size: 24px;
 }
 
+.button-group {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
 .leaderboard-button {
   background-color: #3c82f6;
   border: none;
-  padding: 12px 20px;
+  padding: 12px 24px;
   border-radius: 8px;
   font-weight: bold;
   color: white;
   cursor: pointer;
+  transition: transform 0.2s;
+  white-space: nowrap;
 }
 
+.leaderboard-button:hover {
+    transform: translateY(-2px);
+}
 
 .solved-challenges-section {
-  margin: 0 20px 40px;
-  background-color: #000611;
-  border-radius: 4px;
+  margin: 0 auto 40px;
+  max-width: 1000px;
+  padding: 0 20px;
+  background-color: transparent;
 }
 
 .solved-challenges-section h2 {
   background-color: #3c82f6;
-  padding: 10px;
+  padding: 15px;
   text-align: center;
   font-weight: bold;
   font-size: 18px;
   color: white;
-  border-radius: 4px 4px 0 0;
+  border-radius: 8px 8px 0 0;
+  margin: 0;
 }
 
 .challenge-list {
   background-color: #2e007d;
-  border-radius: 0 0 4px 4px;
+  border-radius: 0 0 8px 8px;
 }
 
 .challenge-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 12px 20px;
-  border-top: 1px solid black;
+  padding: 15px 20px;
+  border-top: 1px solid rgba(0, 0, 0, 0.3);
   font-size: 16px;
   font-weight: 600;
   color: white;
 }
 
-.challenge-item p {
-  margin: 0;
+.challenge-name {
+    margin: 0;
+    word-break: break-word;
+    padding-right: 15px;
+}
+
+.challenge-points {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
 }
 
 .challenge-score {
   font-size: 20px;
   font-weight: 800;
+}
+
+@media (max-width: 768px) {
+  .profile-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin: 20px;
+  }
+
+  .button-group {
+    flex-direction: column;
+    width: 100%;
+    margin-top: 25px;
+  }
+
+  .leaderboard-button {
+    width: 100%;
+  }
+
+  .solved-challenges-section {
+    padding: 0 20px;
+  }
 }

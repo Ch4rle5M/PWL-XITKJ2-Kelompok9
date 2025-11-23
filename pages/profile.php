@@ -10,7 +10,6 @@ if (!isset($_SESSION['username']) || !isset($_SESSION['user_id'])) {
 $userId = $_SESSION['user_id'];
 $username = $_SESSION['username'];
 
-// 1. CEK ROLE
 $stmtRole = $conn->prepare("SELECT role FROM user WHERE id = ?");
 $stmtRole->bind_param("i", $userId);
 $stmtRole->execute();
@@ -19,7 +18,6 @@ $userData = $resRole->fetch_assoc();
 $userRole = $userData['role'] ?? 'player'; 
 $stmtRole->close();
 
-// 2. HITUNG SCORE PRIBADI & LIST CHALLENGE
 $totalScore = 0;
 $solvedChallenges = [];
 
@@ -41,9 +39,6 @@ while ($row = $result->fetch_assoc()) {
 $stmt->close();
 
 
-// --- [LOGIC BARU] HITUNG RANKING ---
-// Kita ambil data leaderboard (sama persis kayak query di leaderboard.php)
-// Biar urutannya konsisten.
 $sqlRank = "SELECT u.id, COALESCE(SUM(c.score), 0) as total_score
             FROM user u
             LEFT JOIN user_solves us ON u.id = us.user_id
@@ -52,26 +47,23 @@ $sqlRank = "SELECT u.id, COALESCE(SUM(c.score), 0) as total_score
             ORDER BY total_score DESC, u.username ASC";
 
 $rankResult = $conn->query($sqlRank);
-$rank = "N/A"; // Default kalau error
+$rank = "N/A";
 
 if ($rankResult) {
     $currentPosition = 1;
-    // Loop semua user dari skor tertinggi
     while ($row = $rankResult->fetch_assoc()) {
-        // Kalau ID di list sama dengan ID user yang login
         if ($row['id'] == $userId) {
             $rank = "#" . $currentPosition;
-            break; // Stop looping, udah ketemu
+            break;
         }
         $currentPosition++;
     }
 }
 
-// Styling Warna Rank (Opsional, biar keren)
 $rankColor = "white";
-if ($rank == "#1") $rankColor = "#ffd700";      // Emas
-elseif ($rank == "#2") $rankColor = "#c0c0c0";  // Perak
-elseif ($rank == "#3") $rankColor = "#cd7f32";  // Perunggu
+if ($rank == "#1") $rankColor = "#ffd700";
+elseif ($rank == "#2") $rankColor = "#c0c0c0";
+elseif ($rank == "#3") $rankColor = "#cd7f32";
 
 $conn->close();
 ?>
@@ -86,9 +78,7 @@ $conn->close();
     <style>
         .admin-btn {
             background-color: #e74c3c !important;
-            margin-left: 10px;
         }
-        /* Animasi dikit buat rank */
         .rank { font-weight: 900; font-size: 1.2em; }
     </style>
 </head>
@@ -112,7 +102,7 @@ $conn->close();
             </p>
         </div>
         
-        <div style="margin-top: 20px;">
+        <div class="button-group">
             <a href="leaderboard.php"><button class="leaderboard-button">Leaderboard</button></a>
             
             <?php if ($userRole === 'admin'): ?>
@@ -125,13 +115,15 @@ $conn->close();
         <h2>Solved Challenge</h2>
         <div class="challenge-list">
              <?php if (empty($solvedChallenges)): ?>
-                <p style="text-align: center; opacity: 0.7;">Belum ada challenge yang diselesaikan.</p>
+                <p style="text-align: center; opacity: 0.7; padding: 20px;">Belum ada challenge yang diselesaikan.</p>
             <?php else: ?>
                 <?php foreach ($solvedChallenges as $challenge): ?>
                     <div class="challenge-item">
-                        <p><?php echo htmlspecialchars($challenge['challenge_name']); ?></p>
-                        <span class="star-icon">★</span>
-                        <span class="challenge-score"><?php echo $challenge['score']; ?></span>
+                        <p class="challenge-name"><?php echo htmlspecialchars($challenge['challenge_name']); ?></p>
+                        <div class="challenge-points">
+                            <span class="star-icon">★</span>
+                            <span class="challenge-score"><?php echo $challenge['score']; ?></span>
+                        </div>
                     </div>
                 <?php endforeach; ?>
             <?php endif; ?>

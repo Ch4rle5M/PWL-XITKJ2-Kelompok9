@@ -1,19 +1,21 @@
 <?php
-session_start(); // <-- INI YANG HILANG. WAJIB ADA DI PALING ATAS
+session_start(); 
 ?>
-<!DOCTYPE php>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <title>Ciphera Homepage</title> <link rel="stylesheet" href="/styles/homepage.css">
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  
+  <title>Ciphera Homepage</title> 
+  <link rel="stylesheet" href="/styles/homepage.css">
   <link href="https://api.fontshare.com/v2/css?f[]=satoshi@1&display=swap" rel="stylesheet">
 
   <style>
-    php{
+    html {
       scroll-behavior: smooth;
     }
-
   </style>
-
 </head>
 <body>
 
@@ -33,46 +35,42 @@ session_start(); // <-- INI YANG HILANG. WAJIB ADA DI PALING ATAS
         Masuk, jelajahi, dan jadilah bagian dari komunitas pecinta kode 
         yang selalu haus akan misteri.
       </p>
-      <a href="#" class="btn">START NOW</a>
+      <a href="/pages/homepage.php#learn-section" class="btn">START NOW</a>
     </div>
   </section>
 
   <section class="info">
-  <div class="info-top">
-    <div class="info-box blue">
-      <p>
-        Kriptografi bukan hanya soal sandi rahasia, tapi juga kunci utama dalam menjaga keamanan digital. 
-        Di sini kamu bisa mulai dari konsep dasar seperti cipher klasik, sampai ke teknik modern yang 
-        dipakai dalam dunia cybersecurity.
-      </p>
+    <div class="info-top">
+      <div class="info-box blue">
+        <p>
+          Kriptografi bukan hanya soal sandi rahasia, tapi juga kunci utama dalam menjaga keamanan digital. 
+          Di sini kamu bisa mulai dari konsep dasar seperti cipher klasik, sampai ke teknik modern yang 
+          dipakai dalam dunia cybersecurity.
+        </p>
+      </div>
+
+      <div class="info-img">
+        <img src="/assets/homepage/Group 10.png" alt="Circle Logo">
+      </div>
     </div>
 
-    <div class="info-img">
-      <img src="/assets/homepage/Group 10.png" alt="Circle Logo">
-    </div>
-  </div>
+    <div class="info-bottom">
+      <div class="info-img">
+        <img src="/assets/homepage/Group 11.png" alt="Binary & Key">
+      </div>
 
-  <div class="info-bottom">
-    
-    <div class="info-img">
-      <img src="/assets/homepage/Group 11.png" alt="Binary & Key">
+      <div class="info-box-purple">
+        <p>
+          Kami menyediakan pembelajaran interaktif yang menantang, dilengkapi latihan soal dan simulasi nyata. 
+          Cocok untuk pemula yang baru mengenal, hingga yang ingin mengasah skill untuk kompetisi CTF atau karir profesional.
+        </p>
+      </div>
     </div>
-
-    
-    <div class="info-box-purple">
-      <p>
-        Kami menyediakan pembelajaran interaktif yang menantang, dilengkapi latihan soal dan simulasi nyata. 
-        Cocok untuk pemula yang baru mengenal, hingga yang ingin mengasah skill untuk kompetisi CTF atau karir profesional.
-      </p>
-    </div>
-  </div>
-</section>
+  </section>
 
   <h1 class="choose-title" id="learn-section">CHOOSE</h1>
 
-
  <div class="choose-container">
-
     
     <div class="choose-card" style="background: linear-gradient(145deg, #0f0, #0a0);">
       <img src="/assets/homepage/Frame 25.png" alt="Easy Icon" width="80">
@@ -81,9 +79,8 @@ session_start(); // <-- INI YANG HILANG. WAJIB ADA DI PALING ATAS
         Learn the core Linux commands—navigation, files, permissions, and more.
         A simple start, but the foundation for everything ahead.
       </p>
-            <a href="easy.php" class="learn-button">Learn</a>
+      <a href="easy.php" class="learn-button">Learn</a>
     </div>
-
 
     <div class="choose-card" style="background: linear-gradient(145deg, #ff7b00, #b44);">
       <img src="/assets/homepage/logo 1.png" alt="Medium Icon" width="80">
@@ -92,7 +89,7 @@ session_start(); // <-- INI YANG HILANG. WAJIB ADA DI PALING ATAS
         Master the basics of Linux commands and start exploring beginner-friendly
         Kali tools like CyberChef.
       </p>
-            <a href="medium.php" class="learn-button">Learn</a>
+      <a href="medium.php" class="learn-button">Learn</a>
     </div>
 
     <div class="choose-card" style="background: linear-gradient(145deg, #d00, #800);">
@@ -102,12 +99,11 @@ session_start(); // <-- INI YANG HILANG. WAJIB ADA DI PALING ATAS
         Combine advanced Kali tools with Python scripting to solve complex,
         real-world challenges.
       </p>
-            <a href="hard.php" class="learn-button">Learn</a>
+      <a href="hard.php" class="learn-button">Learn</a>
     </div>
 
   </div>
 
-  
   <footer class="footer">
     <div class="footer-container">
       <div class="footer-logo">
@@ -133,4 +129,4 @@ session_start(); // <-- INI YANG HILANG. WAJIB ADA DI PALING ATAS
     </div>
   </footer>
 </body>
-</php>
+</html>

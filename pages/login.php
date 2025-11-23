@@ -13,10 +13,15 @@ if (isset($_SESSION['error'])) {
 ?>
 
 <!DOCTYPE html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
   <title>Ciphera Login</title>
   <link rel="stylesheet" href="../styles/login.css">
   <link href="https://api.fontshare.com/v2/css?f[]=satoshi@1&display=swap" rel="stylesheet">
+  
   <style>
     .forgot-pass {
         display: block;
@@ -38,6 +43,7 @@ if (isset($_SESSION['error'])) {
   
   <div class="container">
     <div class="container2">
+      
       <div class="login-box">
         <h2>Login</h2>
         
@@ -59,11 +65,11 @@ if (isset($_SESSION['error'])) {
         <p style="margin-top: 15px; text-align: center; color: #ccc; font-size: 0.9rem;">
             Don't have an account? <a href="signup.php" style="color: #bb66ff; text-decoration: none; font-weight: bold;">Sign Up</a>
         </p>
-    </div>
+      </div>
 
-    <div class="right-box">
-      <h2>Cryptograph is the <br> best category</h2>
-    </div>
+      <div class="right-box">
+        <h2>Cryptograph is the <br> best category</h2>
+      </div>
 
     </div>
   </div>
